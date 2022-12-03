@@ -1,0 +1,62 @@
+import string
+
+alphabet_lower = list(string.ascii_lowercase)
+alphabet_upper = list(string.ascii_uppercase)
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+numbers_2 = [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+lower_dict = {}
+upper_dict = {}
+lower_dict.update(zip(alphabet_lower, numbers))
+upper_dict.update(zip(alphabet_upper, numbers_2))
+
+bb = []
+
+with open('dane.txt', mode='r') as f:
+    content = []
+    index = 1
+    for line in f:
+        b = line.strip()
+        bb.append(b)
+print(bb)
+three_elfs_list = []
+try:
+    for _ in range(len(bb)):
+        a = []
+        for i in range(3):
+            a.append(bb[i])
+
+        three_elfs_list.append(a)
+        for i in range(3):
+            bb.remove(bb[0])
+except:
+    pass
+
+xxx = []
+
+for three_elfs in three_elfs_list:
+    z = 0
+    if z == 0:
+        for elf in three_elfs:
+            for char in elf:
+                if z == 0:
+                    for i in three_elfs[1]:
+                        if char == i:
+                            if z == 0:
+                                for j in three_elfs[2]:
+                                    if i == j:
+                                        xxx.append(j)
+                                        z += 1
+                                        break
+
+result = 0
+for letter in upper_dict:
+    for i in xxx:
+        if i == letter:
+            result += upper_dict[letter]
+
+for letter in lower_dict:
+    for i in xxx:
+        if i == letter:
+            result += lower_dict[letter]
+
+print(result)
