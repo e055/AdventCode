@@ -31,7 +31,7 @@ def container_mover(b, a, c):
     container = contanair_holder[a]
     print(container)
     move = (container[-b:])
-    # move = move[::-1]
+    # move = move[::-1]   # ustawione na część drugą zadania po odchaszowaniu rozwiąże część pierwszą :)
     print(move)
     deleter = len(contanair_holder[a]) - b
     contanair_holder[c] = contanair_holder[c] + move
